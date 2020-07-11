@@ -35,7 +35,10 @@ class ViewController: UIViewController {
         content.sound = .default
         content.userInfo = ["value": "Data dengan local notification"]
 
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        let fireDate = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: Date().addingTimeInterval(3))
+        let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate, repeats: false)
+
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
         let request = UNNotificationRequest(identifier: "message", content: content, trigger: trigger)
 
         let center = UNUserNotificationCenter.current()
