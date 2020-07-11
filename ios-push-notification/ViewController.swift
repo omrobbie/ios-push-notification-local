@@ -29,6 +29,22 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnNotifTapped(_ sender: Any) {
+        let content = UNMutableNotificationContent()
+        content.title = "Title Notification"
+        content.body = "Body Notification. You can write up to 2 lines of notification message in here like this very long messages."
+        content.sound = .default
+        content.userInfo = ["value": "Data dengan local notification"]
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        let request = UNNotificationRequest(identifier: "message", content: content, trigger: trigger)
+
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+        }
     }
 }
 
