@@ -13,4 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
+    @IBAction func btnNotifTapped(_ sender: Any) {
+    }
 }
